@@ -2,8 +2,11 @@
 
 using namespace std;
 
+//今天学习this指针
+
+
+
 int main()
 {
-    cout << "hello world" << endl;
     return 0;
 }
