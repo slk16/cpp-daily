@@ -8,5 +8,10 @@ using namespace std;
 
 int main()
 {
+    auto a = new int(5);
+
+    cout << sizeof (a) << endl;
+    cout << *a << endl;
+
     return 0;
 }
