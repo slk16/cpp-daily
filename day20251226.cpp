@@ -122,7 +122,7 @@ using namespace std;
 // }
 
 // int main(){
-
+ 
 //     GoodGuy gg;
 //     gg.visit1();
 //     gg.visit2();
@@ -132,14 +132,49 @@ using namespace std;
 
 //运算符重载
 
-//c++ python化
+//c++ python化 :P
 class Person
 {
 public:
+    int m_A;
+    int m_B;
 
+    Person operator+(const Person& p)
+    {
+        Person temp;
+        temp.m_A = p.m_A + this->m_A;
+        temp.m_B = p.m_B + this->m_B;
+        return temp;//  值返回
+    }
+    void show(){
+        cout << "m_A: " << this->m_A << '\t';
+        cout << "m_B: " << this->m_B << endl;
+    }
+    Person(){};
+
+    Person(int a, int b = 0):m_A(a),m_B(b){};
+
+    ~Person(){};
+    //Person Person::PersonAddPerson(Person& p);// 类内声明
 };
+// Person Person::PersonAddPerson(Person& p)
+// {
+//     Person temp;
+//     temp.m_A = p.m_A + this->m_A;
+//     temp.m_B = p.m_B + this->m_B;
+//     return temp;//  值返回
+// }//类外定义
 
 int main(){
+    Person p1(1,2);
+    Person p2(2,3);
+    Person p3 = p1 + p2;
+    p3.show();
 
     return 0;
 }
+
+
+
+
+
