@@ -59,32 +59,246 @@
 //     return 0;
 // }
 
+// #include <iostream>
+
+// using namespace std;
+
+// class Person
+// {
+//     friend ostream& operator<<(ostream& cout, Person p);
+// private:
+//     int m_A;
+//     int m_B;
+//     //通常不使用成员函数左移运算符重载
+// public:
+//     Person(int a = 0, int b = 0):m_A(a),m_B(b){};
+
+// };
+// ostream& operator<<(ostream& cout ,Person p){
+//     cout << "m_A = " << p.m_A << endl;
+//     cout << "m_B = " << p.m_B << endl;
+//     return cout;
+// }
+
+
+// int main(){
+//     Person p(10, 20);
+//     cout << "----------" << endl << p << "----------" << endl; // <<未重载 error
+//     cout << "end" << endl;
+
+//     return 0;
+// }
+
+//递增运算符重载
+
+// #include <iostream>
+
+// using namespace std;
+
+// class MyInteger
+// {
+//     friend ostream& operator<<(ostream& cout, MyInteger myint);
+// public:
+//     MyInteger()
+//     {
+//         m_num = 0;
+//     }
+//     MyInteger(int x)
+//     {
+//         m_num = x;
+//     }
+//     MyInteger& operator++()// 返回引用是一直对一个数据进行递增
+//     {//前置递增
+//         this->m_num += 1;
+//         return *this;
+//     }
+//     MyInteger operator++(int)//前置递增返回的是引用而后置递增返回的是临时值
+//     {//这也解释了为什么有时在循环中写前置递增更好 因为不涉及拷贝运算
+//         MyInteger temp = *this;
+//         this->m_num += 1;
+//         return temp;
+//     }
+//     MyInteger& operator--()
+//     {
+//         this->m_num -=1;
+//         return *this;
+//     }
+//     MyInteger operator--(int)
+//     {
+//         MyInteger temp(this->m_num);
+//         this->m_num += 1;
+//         return temp;
+//     }
+
+// private:
+//     int m_num;
+
+// };
+// //重载<<运算符
+// ostream& operator<<(ostream& cout, MyInteger myint){
+//     cout << myint.m_num; 
+//     return cout;
+// }
+
+// int main(){
+//     MyInteger myint;
+
+//     // cout << myint << endl;
+
+//     // cout << ++(++myint)<< endl;
+
+//     // cout << myint << endl;
+
+//     //int i = 1;
+
+//     //cout << (i++)++ << endl; //error
+
+//     //cout << ++(++i) << endl;
+
+//     // cout << myint++ <<endl;
+//     // cout << myint << endl;
+
+//     // cout << --myint << endl;
+//     // cout << --(--myint)<< endl;
+//     // cout << myint << endl;
+    
+//     // cout << myint << endl;
+//     // cout << myint-- << endl;
+//     // cout << myint <<endl;
+
+
+//     return 0;
+// }
+
+// #include <iostream>
+
+// using namespace std;
+
+// class Person{
+// public:
+//     Person(int age = 0){
+//         m_age = new int(age);
+//     }
+//     Person(const Person& p){
+//         m_age = new int(*p.m_age);
+//     }
+
+//     ~Person(){
+//         if (m_age != NULL){
+//             delete m_age;
+//             m_age = NULL;
+//         }
+//     }
+
+//     Person& operator=(const Person& p){
+//         *(m_age) = *(p.m_age);//直接修改值
+//         return *this;
+//     }
+
+// //private:
+//     int* m_age;
+// };
+
+// int main(){
+//     Person p1(18);
+
+//     //Person p2 = p1;//这是调用了拷贝构造函数实现了p2的初始化
+
+//     Person p2(20);
+//     p2 = p1;//这种赋值运算没有调用拷贝构造函数，而上面那一句调用了有参构造函数，
+//     //没有发生赋值运算符重载时，上面这一句会导致内存泄漏与同一片内存的重复释放
+
+//     cout << "The age of p1 is " << *p1.m_age << endl;
+//     cout << "The age of p2 is " << *p2.m_age << endl;
+
+//     // int a = 10;
+//     // int b = 20;
+//     // int c = 30;
+
+//     // a = b = c;
+
+//     // cout << "a = " << a << endl;
+//     // cout << "b = " << b << endl;
+//     // cout << "c = " << c << endl;
+
+//     Person p3(30);
+//     Person p4(40);
+//     p4 = p3 = p1;
+
+//     cout << "The age of p3 is " << *p3.m_age << endl;
+//     cout << "The age of p4 is " << *p4.m_age << endl;
+
+//     return 0;
+// }
+
+//关系运算符重载
+
+// #include <iostream>
+
+// using namespace std;
+
+// class Person
+// {
+// public:
+
+//     Person(string name, int age)
+//     {
+//         m_name = name;
+//         m_age = age;
+//     }
+
+//     bool operator==(Person& p){
+//         if (this->m_age == p.m_age && this->m_name == p.m_name)
+//             return true;
+//         else
+//             return false;
+//     }
+
+//     string m_name;
+//     int m_age;
+// };
+
+// int main()
+// {
+//     Person p1("Tom",18);
+
+//     Person p2("Tom",18);
+
+//     if (p1 == p2){
+//         cout << "p1和p2是相等的" << endl;
+//     }
+//     return 0;
+// }
+
+//函数调用运算符重载
+
+//仿函数非常灵活 重载()
+
 #include <iostream>
 
 using namespace std;
 
-class Person
+class MyPrint
 {
-    friend ostream& operator<<(ostream& cout, Person p);
-private:
-    int m_A;
-    int m_B;
-    //通常不使用成员函数左移运算符重载
 public:
-    Person(int a = 0, int b = 0):m_A(a),m_B(b){};
-
+    //重载函数调用运算符
+    void operator()(string test)
+    {
+        cout << test << endl;
+    }
 };
-ostream& operator<<(ostream& cout ,Person p){
-    cout << "m_A = " << p.m_A << endl;
-    cout << "m_B = " << p.m_B << endl;
-    return cout;
-}
-
-
+class MyAdd
+{
+public:
+    int operator()(int x, int y){
+        return x + y;
+    }
+};
 int main(){
-    Person p(10, 20);
-    cout << "----------" << endl << p << "----------" << endl; // <<未重载 error
-    cout << "end" << endl;
+    MyPrint print;
+    print("helloworld");//使用起来非常像函数 因此称为仿函数
 
+    MyAdd add;
+    cout << add(1,2) << endl;
     return 0;
 }
