@@ -274,31 +274,35 @@
 
 //仿函数非常灵活 重载()
 
-#include <iostream>
+// #include <iostream>
 
-using namespace std;
+// using namespace std;
 
-class MyPrint
-{
-public:
-    //重载函数调用运算符
-    void operator()(string test)
-    {
-        cout << test << endl;
-    }
-};
-class MyAdd
-{
-public:
-    int operator()(int x, int y){
-        return x + y;
-    }
-};
-int main(){
-    MyPrint print;
-    print("helloworld");//使用起来非常像函数 因此称为仿函数
+// class MyPrint
+// {
+// public:
+//     //重载函数调用运算符
+//     void operator()(string test)
+//     {
+//         cout << test << endl;
+//     }
+// };
+// class MyAdd
+// {
+// public:
+//     int operator()(int x, int y){
+//         return x + y;
+//     }
+// };
+// int main(){
+//     MyPrint print;
+//     print("helloworld");//使用起来非常像函数 因此称为仿函数
 
-    MyAdd add;
-    cout << add(1,2) << endl;
-    return 0;
-}
+//     MyAdd add;
+//     cout << add(1,2) << endl;
+
+//     //匿名函数对象
+//     cout << MyAdd()(100,200) << endl;
+
+//     return 0;
+// }
