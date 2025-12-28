@@ -306,3 +306,290 @@
 
 //     return 0;
 // }
+
+// #include <iostream>
+
+// using namespace std;
+
+// class Java
+// {
+// public:
+//     void header()
+//     {
+//         cout << "首页 公开课 登录 注册" << endl;
+//     }
+//     void footer()
+//     {
+//         cout <<"帮助中心 交流合作 站内地图" << endl;
+//     }
+//     void left()
+//     {
+//         cout << "Java python C++"<< endl;
+//     }
+//     void content()
+//     {
+//         cout << "Java学科视频" <<endl;
+//     }
+// };
+// class Python
+// {
+// public:
+//     void header()
+//     {
+//         cout << "首页 公开课 登录 注册" << endl;
+//     }
+//     void footer()
+//     {
+//         cout <<"帮助中心 交流合作 站内地图" << endl;
+//     }
+//     void left()
+//     {
+//         cout << "Java python C++"<< endl;
+//     }
+//     void content()
+//     {
+//         cout << "Python学科视频" <<endl;
+//     }
+// };
+// class Cpp
+// {
+// public:
+//     void header()
+//     {
+//         cout << "首页 公开课 登录 注册" << endl;
+//     }
+//     void footer()
+//     {
+//         cout <<"帮助中心 交流合作 站内地图" << endl;
+//     }
+//     void left()
+//     {
+//         cout << "Java python C++"<< endl;
+//     }
+//     void content()
+//     {
+//         cout << "c++学科视频" <<endl;
+//     }
+// };
+// void test1()
+// {
+//     cout << "Java下载视频页面如下：" << endl;
+//     Java ja;
+//     ja.header();
+//     ja.left();
+//     ja.content();
+//     ja.footer();
+//     cout << "------------------------------"<<endl;
+//     cout << "python下载视频页面如下：" << endl;
+//     Python py;
+//     py.header();
+//     py.left();
+//     py.content();
+//     py.footer();
+//     cout << "------------------------------"<<endl;
+//     cout << "c++下载视频页面如下：" << endl;
+//     Cpp cpp;
+//     cpp.header();
+//     cpp.left();
+//     cpp.content();
+//     cpp.footer();
+// }
+// #include <iostream>
+// using namespace std;
+
+// class BasePage
+// {
+// public:
+//     void header()
+//     {
+//         cout << "首页 公开课 登录 注册" << endl;
+//     }
+//     void footer()
+//     {
+//         cout <<"帮助中心 交流合作 站内地图" << endl;
+//     }
+//     void left()
+//     {
+//         cout << "Java python c++" << endl;
+//     }
+// };
+// class Java: public BasePage
+// {
+// public:
+//     void content()
+//     {
+//         cout << "Java学科视频" << endl;
+//     }
+// };
+// class Python:public BasePage
+// {
+// public:
+//     void content()
+//     {
+//         cout <<"Python学科视频" << endl;
+//     }
+// };
+// class print
+// {
+// public:
+    
+// };
+// class Cpp:public BasePage 
+// {
+// public:
+//     void content()
+//     {
+//         cout << "c++学科视频" << endl;
+//     }
+// };
+// void test2()
+// {
+//     cout << "Java下载视频页面如下：" << endl;
+//     Java ja;
+//     ja.header();
+//     ja.left();
+//     ja.content();
+//     ja.footer();
+//     cout << "------------------------------"<<endl;
+//     cout << "python下载视频页面如下：" << endl;
+//     Python py;
+//     py.header();
+//     py.left();
+//     py.content();
+//     py.footer();
+//     cout << "------------------------------"<<endl;
+//     cout << "c++下载视频页面如下：" << endl;
+//     Cpp cpp;
+//     cpp.header();
+//     cpp.left();
+//     cpp.content();
+//     cpp.footer();
+// }
+
+// int main(){
+
+//     test2();
+
+//     return 0;
+// }
+
+//不同继承方式
+
+// #include <iostream>
+// using namespace std;
+
+// class Base1
+// {
+// public:
+//     int m_A;
+// protected:
+//     int m_B;
+// private:
+//     int m_C;
+// };
+// class Son1:public Base1
+// {
+// public:
+//     void func()
+//     {
+//         m_A = 10;
+//         m_B = 10;
+//         //m_C = 10; //error无法访问
+//     }
+// };
+// class Son2:protected Base1
+// {
+// public:
+//     void func()
+//     {
+//         m_A = 10;
+//         m_B = 20;
+//         //m_C = 30;//无法访问
+//     }
+// };
+// class Son3:private Base1
+// {
+// public:
+//     void func()
+//     {
+//         m_A = 10;
+//         m_B = 20;
+//         //m_C = 30;//无法访问
+//     }
+// };
+// class Grandson3:public Son3
+// {
+// public:
+//     void func()
+//     {
+//         // m_A = 10; // 私有成员无论何种继承均无法访问
+//         // m_B = 20;
+
+//     }
+// };
+
+// int main(){
+//     Son1 s1;
+//     s1.m_A = 1;
+//     //S1.m_B = 2;//保护权限无法访问
+
+//     Son2 s2;
+//     //s2.m_A = 20;//保护权限无法访问
+
+//     Son3 s3;
+//     //s3.m_A = 10;//私有权限无法访问
+//     //s3.m_B = 10;//error
+
+//     return 0;
+// }
+#include <iostream>
+
+using namespace std;
+class Base
+{
+public:
+    int m_A;
+protected:
+    int m_B;
+private:
+    int m_C;
+public:
+    Base()
+    {
+        cout << "Base 构造函数调用" << endl;
+    }
+    ~Base()
+    {
+        cout << "Base 析构函数调用" << endl;
+    }
+};
+class Son: public Base 
+{
+public:
+    Son()
+    {
+        cout << "Son 构造函数调用" << endl;
+    }
+    ~Son()
+    {
+        cout << "Son 析构函数调用" << endl;
+    }
+    int m_D;
+};
+
+int main()
+{
+    //cout << "sizeof Son is " << sizeof(Son) << endl;
+    //父类中的所有非静态属性都会被子类继承下去
+    //弗雷中私有成员属性是被编译器给隐藏了，因此是访问不到
+
+    // {
+    //     Base b;
+    // }
+    {
+        Son s;
+    }
+
+
+    return 0;
+}
