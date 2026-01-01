@@ -168,42 +168,156 @@ using namespace std;
 // }
 
 
-#include <iostream>
+// #include <iostream>
 
-using namespace std;
+// using namespace std;
 
-class Animal
-{
-public:
-    int m_age;
-};
-class Sheep:virtual public Animal
-{
-public:
-};
-class Camel:virtual public Animal
-{
-public:
-};
-class Alpaca:public Sheep,public Camel
-{
+// class Animal
+// {
+// public:
+//     int m_age;
+// };
+// class Sheep:virtual public Animal
+// {
+// public:
+// };
+// class Camel:virtual public Animal
+// {
+// public:
+// };
+// class Alpaca:public Sheep,public Camel
+// {
 
-};
-//vbptr virtual basic pointer虚基类指针
-
-
-int main(){
-    Alpaca a;
-    a.Sheep::m_age = 10;
-    a.Camel::m_age = 20;
-
-    cout << a.Sheep::m_age << endl;
-    cout << a.Camel::m_age << endl; 
-
-    cout << sizeof a << endl;
+// };
+// //vbptr virtual basic pointer虚基类指针
+// //指向虚基类表 vbtable
 
 
+// int main(){
+//     Alpaca a;
+//     a.Sheep::m_age = 10;
+//     a.Camel::m_age = 20;
+
+//     cout << a.Sheep::m_age << endl;
+//     cout << a.Camel::m_age << endl; 
+
+//     cout << sizeof a << endl;
+
+//     return 0;
+// }
+
+// class Animal
+// {
+// public:
+//     virtual void speak()//虚函数
+//     {
+//         cout << "动物在说话" << endl;
+//     }
+// };
+// // class base
+// // {
+// // public:
+// //     int m_a;
+// // };
+// class Cat: public Animal
+// {
+// public:
+//     void speak()
+//     {
+//         cout << "小猫在说话" << endl;
+//     }
+// };
+// class Dog: public Animal
+// {
+// public:
+//     void speak() 
+//     {
+//         cout <<"小狗在说话"<<endl;
+//     }
+// };
+// void doSpeak(Animal& animal)//地址早绑定
+// {// 父类指针或引用指向子类对象
+
+            
+//     animal.speak();
+// }
 
 
-    return 0;
-}
+// int main()
+// {
+//     Cat cat;
+//     doSpeak(cat);
+//     Dog dog;
+//     doSpeak(dog);
+
+//     Animal* a = new Animal;
+//     a->speak();
+
+
+//     return 0;   
+// }
+
+// class Base
+// {
+// public:
+//     virtual void show(){
+//         cout << "Base" <<endl;
+//     }
+//     int m_a;
+//     Base(){
+//         m_a = 1;
+//     }
+// };
+// class Son1:public Base
+// {
+// public:
+//     void show(){
+//         cout <<"Son1"<<endl;
+//     }
+//     int m_b;
+//     Son1(){
+//         m_b = 2;
+//     }
+// };
+// class Son2:public Base
+// {
+// public:
+//     void show(){
+//         cout <<"Son2"<<endl;
+//     }
+// };
+// void doShow(Base& b){
+//     b.show();
+// }
+// int main(){
+//     Base* a;
+//     Son1 b;
+//     Son2 c;
+//     a = &b;
+//     a->show();
+
+//     doShow(c);
+
+//     return 0;
+// }
+
+//接下来简单了解一下c++模版是什么 基本语法是什么
+
+// template<typename T>
+// void func(T a){
+//     cout << a << endl;
+// }
+
+
+// int main(){
+//     func<int>(1);//自动类型推导
+//     func("helloworld");
+//     func(2.2);
+
+//     func<const char*>("hello template");
+
+//     return 0;
+// }
+
+
+
