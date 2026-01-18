@@ -83,6 +83,10 @@ int char_compare(char a, char b)
 {
     return (int)(a - b);
 }
+int int_compare(int a, int b)
+{
+    return (a - b);
+}
 template<class T>
 void printArray(T arr[], int len)
 {
@@ -99,6 +103,13 @@ int main(){
     selection_sort(charArr,charArrLen,char_compare);
 
     printArray(charArr,charArrLen);
+
+    cout << endl;
+
+    int intArr[] = {1,5,3,2,5};
+    int intArrLen =  sizeof(intArr) / sizeof(int);
+    selection_sort(intArr,intArrLen,int_compare);
+    printArray(intArr,intArrLen);
 
     //cout << charArr << endl;
 
