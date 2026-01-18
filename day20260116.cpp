@@ -102,14 +102,16 @@ int main(){
     int charArrLen = sizeof(charArr) - 1;
     selection_sort(charArr,charArrLen,char_compare);
 
+    // test01<int>(); // 对于非函数模版，不可指定类型
+
     printArray(charArr,charArrLen);
 
     cout << endl;
 
     int intArr[] = {1,5,3,2,5};
     int intArrLen =  sizeof(intArr) / sizeof(int);
-    selection_sort(intArr,intArrLen,int_compare);
-    printArray(intArr,intArrLen);
+    selection_sort<int>(intArr,intArrLen,int_compare);
+    printArray<int>(intArr,intArrLen);
 
     //cout << charArr << endl;
 
