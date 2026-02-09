@@ -19,6 +19,8 @@
 #define TC_0_CYN "\x1B[0;36m"
 #define TC_0_WHT "\x1B[0;37m"
 
+#define tc_clear_screen() cout<<"\x1B[2J"
 
+#define tc_move_cursor(X,Y) cout<<"\033["<<Y<<";"<<X<<"H"
 
 #endif // TCH

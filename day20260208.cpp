@@ -41,7 +41,7 @@ int main()
         system("clear");
         show(arr);
 
-    }while();
+    }while(1);
 
 
     return 0;
