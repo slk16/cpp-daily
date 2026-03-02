@@ -59,7 +59,7 @@ char* gen(char* str, int n)
     std::default_random_engine e1((unsigned int)time(NULL) + n);
     std::uniform_int_distribution u1((int)0x80000000,(int)0x7fffFFFF);
     std::default_random_engine e((unsigned int)u1(e1));
-    std::uniform_int_distribution<int> u(0,9);
+    std::uniform_int_distribution<int> u(1,9);
     int sum = 0;
     for(int i = 0;i < n - 1; ++i)
     {
@@ -169,12 +169,14 @@ void test03()
 }
 void test04()
 {
-
+     
 }
 
 
 int main()
 {
+    // test03();
+    test04();
 
     return 0;
 }
