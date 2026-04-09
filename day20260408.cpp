@@ -59,7 +59,6 @@ int __partition(vector<int>& nums, int left, int right)
 {
     int pivot = left;
     int i = left + 1;
-    while ()
 }
 
 void quick_sort(vector<int>& nums)
@@ -137,7 +136,7 @@ void selection_sort(vector<int>& nums)
 void insertion_sort(vector<int>& nums)
 {
     if (nums.size() < 2) // 2 4 2 6 3 7
-        return;·
+        return;
     for (int i = 1; i < nums.size(); ++i) {
         int temp = nums[i];
         if (temp >= nums[i - 1])
