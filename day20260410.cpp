@@ -16,22 +16,53 @@
 
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
-int f(int n) {
-    if (n == 1)
-        return 1;
-    return n * f(n-1);
+//int tz(int n) {
+//    if (n == 1)
+//        return 1;
+//    return 2 * tz(n - 1) + 2;
+//}
+//
+//int f(int n) {
+//    if (n == 1)
+//        return 1;
+//    return n * f(n-1);
+//}
+
+
+int f(int i, vector<int>& arr, int n)
+{
+    if (i >= n)
+        return 0;
+    return f(i + arr[i], arr, n) + 1;
 }
 int main()
 {
-    int sum = 0;
-    for (int i = 1; i <= 100; ++i) {
-        sum += i;
+    int n;
+    cin >> n;
+    vector<int> arr;
+    for (int i = 0, a; i < n; ++i) {
+        cin >> a;
+        arr.push_back(a);
     }
-    cout << sum << endl;
+    cout << "Result : " << f(0, arr, n) << endl;
 
-    cout << "Result : " << f(10) << endl;
+
+
+
+
+//    int sum = 0;
+//    for (int i = 1; i <= 100; ++i) {
+//        sum += i;
+//    }
+//    cout << sum << endl;
+//
+//    cout << "Result : " << f(10) << endl;
+
+//    cout << "tzsl : " <<  tz(10) << endl;;
+
 
     return 0;
 }
