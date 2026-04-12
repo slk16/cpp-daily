@@ -36,7 +36,6 @@ int main()
     int sockfd = createSocket();
     sockaddr sa;
 
-    bind(sockfd,)
 
 
 
