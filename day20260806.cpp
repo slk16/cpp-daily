@@ -152,7 +152,8 @@ namespace test {
         }
         enum class Strategy{
             Random,
-            Ordered
+            Ordered,
+            ReverseOrdered
         };
         namespace quick_sort {
             namespace v0 {
@@ -175,23 +176,33 @@ namespace test {
             }
             namespace v1 {
                 void quick_sort(std::vector<int>& arr, int left, int right) {
-                    int l = left, r = right, p = arr[left];                    
-                    while (l < r) {
-                        while (l < r && arr[r] >= p) --r;
-                        if (l < r) std::swap(arr[l++], arr[r]);
-                        while (l < r && arr[l] <= p) ++l;
-                        if (l < r) std::swap(arr[r--], arr[l]);
-                    }
-                    quick_sort(arr, left, l);
-                    quick_sort(arr, l + 1, right);
+                    if (left >= right)
+                        return ;
+                    int p = arr[left], r = right, l = left;
+                    do {
+                        while (arr[r] > p) --r;
+                        while (arr[l] < p) ++l;
+                        if (l <= r) {
+                            std::swap(arr[l], arr[r]); 
+                            ++l;
+                            --r;
+                        }
+                    } while (l <= r);
+                    quick_sort(arr, left, r);
+                    quick_sort(arr, l, right);
                     return ;
                 }
+
             }
+            //namespace v2{
+            //    void quick_sort(std::vector<int> &arr, int left, int right) {
+            //    }
+            //}
         }
         void test_sort(std::initializer_list<SortMethod>, int size = -1, Strategy s = Strategy::Random);
         // ------------- test -------------
         void test01() {
-            using test::test_sort::quick_sort::v0::quick_sort;
+            using test::test_sort::quick_sort::v1::quick_sort;
             test_sort({
                 /*SortMethod("selection_sort", selection_sort),
                 SortMethod("insertion_sort", insertion_sort),
@@ -200,12 +211,13 @@ namespace test {
                 SortMethod("shell_sort_hibbard", shell_sort_hibbard),
                 SortMethod("bubble_sort", bubble_sort),*/
                 SortMethod("quick_sort", quick_sort)
-            }, 10000, Strategy::Ordered);
+            }, 10000, Strategy::ReverseOrdered);
 
         }
         // ------------- test -------------
         std::pair<std::vector<int>,std::vector<int>> get_random_data(int size = -1);
         std::pair<std::vector<int>,std::vector<int>> get_ordered_data(int size = -1);
+        std::pair<std::vector<int>, std::vector<int>> get_reverse_ordered_data(int size = -1);
         void test_sort(std::initializer_list<SortMethod> methods, int size, Strategy s)
         {
             if (methods.size() < 1)
@@ -219,12 +231,19 @@ namespace test {
                 } else {
                     data = get_random_data();
                 }
-            } else {
+            } else if (s == Strategy::ReverseOrdered) {
                 std::cout << "Ordered";
                 if (-1 != size) {
                     data = get_ordered_data(size);
                 } else {
                     data = get_ordered_data();
+                }
+            } else if (s == Strategy::ReverseOrdered) {
+                std::cout << "ReverseOrdered";
+                if (-1 != size) {
+                    data = get_reverse_ordered_data(size);
+                } else {
+                    data = get_reverse_ordered_data();
                 }
             }
             std::cout << std::endl;
@@ -290,6 +309,17 @@ namespace test {
             ret.second.resize(size);
             std::iota(ret.first.begin(), ret.first.end(), 1);
             std::iota(ret.second.begin(), ret.second.end(), 1);
+            return ret;
+        }
+        std::pair<std::vector<int>, std::vector<int>>
+        get_reverse_ordered_data (int size){
+            if (size == -1)
+                size = random_No();
+            std::pair<std::vector<int>, std::vector<int>> ret;
+            ret.first.resize(size);
+            ret.second.resize(size);
+            std::iota(ret.first.rbegin(), ret.first.rend(), random_No());
+            std::iota(ret.second.rbegin(), ret.second.rend(), random_No());
             return ret;
         }
         std::pair<std::vector<int>, std::vector<int>>

@@ -1,33 +1,65 @@
-# Prerequisites
+# ---- compilers / linkers ----
 *.d
-
-# Compiled Object files
-*.slo
-*.lo
 *.o
 *.obj
-
-# Precompiled Headers
+*.slo
+*.lo
 *.gch
 *.pch
-
-# Compiled Dynamic libraries
 *.so
 *.dylib
 *.dll
-
-# Fortran module files
 *.mod
 *.smod
-
-# Compiled Static libraries
 *.lai
 *.la
 *.a
 *.lib
-
-# Executables
 *.exe
 *.out
 *.app
+*.bin
+
+# ---- cmake / build trees ----
+build/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+CMakeConfigureLog.yaml
+*.make
+Makefile2
+cmake.check_cache
+progress.marks
+*.internal
+
+# ---- c++20 modules module cache ----
+gcm.cache/
+*.gcm
+
+# ---- clangd index caches ----
+.cache/
+.clangd/index/
+
+# ---- downloaded course handouts ----
+*.tar
+
+# ---- local editor / agent state ----
 .aider*
+.claude/settings.local.json
+
+# ---- compiled programs that carry no extension ----
+# (their sources are tracked; the binaries are not)
+cpp20/consteval
+cpp20/test
+cpp26/test
+projects/csapp/bomblab/bomb/bomb
+projects/csapp/datalab/datalab-handout/dlc
+projects/csapp/datalab/test
+projects/subtitle_handle/v1/test
+projects/tools/sgrep/test/sgrep
+tools/gdb/_test/
+tools/gdb/cp
+tools/gdb/print
+tools/gdb/test
+tracks/c_data_structure/test

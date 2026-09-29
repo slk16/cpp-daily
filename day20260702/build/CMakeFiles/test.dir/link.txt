@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/test.dir/day20260702.cpp.o "CMakeFiles/test.dir/day20260702-test2.cpp.o" -o test 
