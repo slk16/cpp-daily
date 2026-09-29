@@ -1,5 +1,8 @@
-# 描述
-这是每日代码实验与练习的目录
+# cpp-daily
+
+自学 C++ 的每日练习：按天提交的小 demo、数据结构与算法实现（2025-12 起）。
+
+Daily C++ practice — one small program per day, self-taught, since Dec 2025.
 
 ## License
 
