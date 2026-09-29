@@ -47,6 +47,7 @@ gcm.cache/
 *.tar
 
 # ---- local editor / agent state ----
+.vscode/
 .aider*
 **/.claude/settings.local.json
 
