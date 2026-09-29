@@ -38,15 +38,17 @@ gcm.cache/
 *.gcm
 
 # ---- clangd index caches ----
+# NOTE: a pattern containing "/" is anchored to this file's directory, so
+# these need the leading **/ to apply to nested projects as well.
 .cache/
-.clangd/index/
+**/.clangd/index/
 
 # ---- downloaded course handouts ----
 *.tar
 
 # ---- local editor / agent state ----
 .aider*
-.claude/settings.local.json
+**/.claude/settings.local.json
 
 # ---- compiled programs that carry no extension ----
 # (their sources are tracked; the binaries are not)
